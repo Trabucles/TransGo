@@ -3,7 +3,7 @@
     "name": "transGo",
     "slug": "transGo",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "unspecified",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,

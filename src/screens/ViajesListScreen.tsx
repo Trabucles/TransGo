@@ -1,9 +1,10 @@
+// src/screens/ViajesListScreen.tsx
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-// Definir un tipo para los viajes
+// Definir el tipo para los viajes
 interface Viaje {
   id: string;
   selectedRuta: string;
@@ -12,6 +13,7 @@ interface Viaje {
   destino: string;
   horaSalida: string;
   horaLlegada: string;
+  fecha: string;
 }
 
 // Define el tipo para la navegación en ViajesListScreen (navegará hacia 'Viaje')
@@ -84,10 +86,13 @@ const ViajesListScreen = ({ navigation }: Props) => {
           keyExtractor={keyExtractor} // Usamos la función para generar claves únicas
           renderItem={({ item, index }) => (
             <View style={styles.routeItem}>
-              <Text style={styles.route}>{`Ruta: ${item.selectedRuta}`}</Text>
-              <Text style={styles.route}>{`Conductor: ${item.selectedConductor}`}</Text>
-              <Text style={styles.route}>{`Autobús: ${item.selectedAutobus}`}</Text>
-              <Text style={styles.route}>{`Destino: ${item.destino}`}</Text>
+              <Text style={styles.route}>Ruta: {item.selectedRuta}</Text>
+              <Text style={styles.route}>Conductor ID: {item.selectedConductor}</Text>
+              <Text style={styles.route}>Autobús: {item.selectedAutobus}</Text>
+              <Text style={styles.route}>Destino: {item.destino}</Text>
+              <Text style={styles.route}>Fecha: {item.fecha}</Text>
+              <Text style={styles.route}>Hora de Salida: {item.horaSalida}</Text>
+              <Text style={styles.route}>Hora de Llegada: {item.horaLlegada}</Text>
               <View style={styles.buttonsContainer}>
                 <TouchableOpacity onPress={() => handleEdit(item)} style={styles.editButton}>
                   <Text style={styles.buttonText}>Editar</Text>
